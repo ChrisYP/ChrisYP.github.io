@@ -9,6 +9,9 @@
 * `x-kpsdk-cd` 消耗 `50` 点, 必传 `href`
 
 ### 说明
+
+* 参数调用非常复杂，强烈建议直接使用 `pynocaptcha`，详情看下面 python 示例！！！
+
 * 当看到请求头中有 `x-kpsdk-ct`、`x-kpsdk-cd` 时, 代表存在 `kasada` 验证
 * x-kpsdk-ct 请保持 user_agent 一致, 结果可多次使用
 * x-kpsdk-cd 仅可使用一次
@@ -34,11 +37,13 @@
 
 | 参数名          | 类型        | 说明                                                                                                                                                             | 必须  |
 |--------------|-----------|-----------------------------|-----|
-| `href`    | `String`  | `触发 kasada 验证的页面地址`    | `是` |
+| `href`    | `String`  | `f12 搜索 /149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.1.0, 没有的话搜索 /149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/ips.js?, 填响应 html 中有这个链接的那个请求的 url`    | `是` |
+| `fp_html` | `String` | `/fp?x-kpsdk-v=j-1.1.0 结尾的请求响应内容` | `是` |
 | `ips_url`    | `String`  | `ips.js 结尾的脚本地址`    | `是` |
+| `fp_host` | `String` | `/fp?x-kpsdk-v=j-1.1.0 结尾的请求的域名` | `否` |
 | `ips_script`    | `String`  | `ips.js 结尾的请求响应内容`    | `否` |
 | `ips_headers`    | `String`  | `ips.js 结尾的请求响应头`    | `否` |
-| `submit`    | `Boolean`  | `是否提交 tl 请求, 直接返回 x-kpsdk-ct`    | `否` |
+| `submit`    | `Boolean`  | `是否提交 tl 请求, 直接返回 x-kpsdk-ct, 默认不提交, 建议不填直接使用纯计算模式`    | `否` |
 | `proxy`    | `String`  | `保持代理一致, 请使用海外代理, 格式请传 ip:port 或 usr:pwd@ip:port (如果有问题联系管理员)` | `否` |
 | `country`    | `String`  | `业务流程使用的代理所属地区国家 code, 如美国（us）、英国（uk）, 详情可咨询管理`    | `否` |
 | `ip`    | `String`  | `业务流程使用的代理流程的 ip 地址（例: 56.214.78.94）, 详情可咨询管理`    | `否` |
@@ -51,16 +56,40 @@
 |--------------|-----------|-----------------------------|-----|
 | `href`    | `String`  | `触发 kasada 验证的页面地址`    | `是` |
 | `st`    | `Integer`  | `ct 接口返回的 x-kpsdk-st`    | `是` |
+| `ct`    | `String`  | `ct 接口返回的 x-kpsdk-ct`    | `是` |
 
 #### x-kpsdk-ct json 示例
 
 ```
 {
-  "href": "https://xxxxxx/",
-  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-  "ips_url": "https://mcprod.arcteryx.com/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/ips.js?KP_UIDz=0Bq6UrR5HcFsnanIqKh0sPmDlXPIsIgYOkqfWXmPbX3KUnDQolsM8jKrvJZmkrv4m4su7eSIA78mvZ27JWqvPAzc1BXpYaDVlvYyCtMj5UWxIvIaKpkaK6RWwQk0UT6jkHt4R9lb2vUvYdHq4j30Sx2EYZmwkn9yTadnEqPN&x-kpsdk-v=j-0.0.0&x-kpsdk-im=CiRmOTgyZTY5Yy0wMDZhLTQ1YzEtYjllZS03NzY2MWY5NDIzZjg",
-  "submit": false,
-  "proxy": "user:pass@ip:port",
+    "href": "https://api.crowdgen.com/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.1.0",
+    "fp_host": "api.crowdgen.com",
+    "fp_html": "<!DOCTYPE html><html><head></head><body><script>window.KPSDK={};KPSDK.now=typeof performance!=='undefined'&&performance.now?performance.now.bind(performance):Date.now.bind(Date);KPSDK.start=KPSDK.now();window.parent.postMessage('KPSDK:MC:CiQxM2RlOTc1Ni1kNmMyLTQ3MDItOTFkZC1hOGUzZDdjOGJjYWU:DllWUiZYDA...",
+    "ips_script": "KPSDK.scriptStart=KPSDK.now();\"use strict\";(function(){var C=function(v,u,f){for(var a=u.length,r=a-f,t=[],M=0;M<v.length;)for(var h=0,l=1;;){var x=u.indexOf(v[M++]);if(h+=l*(x%f),x<f){t.push(h|0);break}h+=f*l,l*=r}return t};var s=\"7CI1IKIJIjIAIYIWInIbI4a=5=1<C=1+Z1<C=11N+<C=1K1<C=1Jv+<C=1j8K<C=1A3I...",
+    "ips_headers": {
+        "via": "1.1 53b2bbb13e5db590d598ee4e9aa9bd80.cloudfront.net (CloudFront)",
+        "x-cache": "Miss from cloudfront",
+        "p3p": "CP=\"This site does not specify a policy in the P3P header\"",
+        "access-control-expose-headers": "x-kpsdk-ct,x-kpsdk-r,x-kpsdk-c",
+        "x-kpsdk-r": "1-AA",
+        "x-kpsdk-ct": "0ICFRuAoYP3moorFdO2iQq6vhcbHNSygkrDoKFyMREAOjqIRlqlpNMeiyLrd7Pu290rhSTvDyf62nhOZ132LVkI0SZktfWzlGDUS0DJbevip5kghoBdRhf77kApVef89UEOCAYbs6TTKraEhuQapM5FWvU57ixfMj58hSiIR",
+        "x-amz-cf-id": "zgHjq3UDbJQexs6W2cdIclz8PSWGffqvOvZWTdexO9nKJMLlUIIX0Q==",
+        "pragma": "no-cache",
+        "expires": "0",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "set-cookie": "KP_UIDz-ssn=0ICFRuAoYP3moorFdO2iQq6vhcbHNSygkrDoKFyMREAOjqIRlqlpNMeiyLrd7Pu290rhSTvDyf62nhOZ132LVkI0SZktfWzlGDUS0DJbevip5kghoBdRhf77kApVef89UEOCAYbs6TTKraEhuQapM5FWvU57ixfMj58hSiIR; Max-Age=86400; Path=/; Expires=Sat, 07 Jun 2025 09:02:51 GMT; HttpOnly; Secure; SameSite=None",
+        "date": "Fri, 06 Jun 2025 09:02:51 GMT",
+        "x-amz-cf-pop": "HKG62-C2",
+        "content-type": "application/javascript; charset=utf-8"
+    },
+    "cookies": {
+        "KP_UIDz-ssn": "0ICFRuAoYP3moorFdO2iQq6vhcbHNSygkrDoKFyMREAOjqIRlqlpNMeiyLrd7Pu290rhSTvDyf62nhOZ132LVkI0SZktfWzlGDUS0DJbevip5kghoBdRhf77kApVef89UEOCAYbs6TTKraEhuQapM5FWvU57ixfMj58hSiIR",
+        "KP_UIDz": "0ICFRuAoYP3moorFdO2iQq6vhcbHNSygkrDoKFyMREAOjqIRlqlpNMeiyLrd7Pu290rhSTvDyf62nhOZ132LVkI0SZktfWzlGDUS0DJbevip5kghoBdRhf77kApVef89UEOCAYbs6TTKraEhuQapM5FWvU57ixfMj58hSiIR"
+    },
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+    "iframe": true,
+    "submit": false,
+    "is_auth": false,
 }
 ```
 
@@ -69,7 +98,8 @@
 ```
 {
     "href": "https://xxxxxx/",
-    "st": 1716775584627
+    "st": 1716775584627,
+    "ct": "x-kpsdk-ct 的值",
 }
 ```
 
@@ -145,35 +175,67 @@
 
 ### 调用示例
 
-#### python
+#### python（强烈建议使用 pynocaptcha 封装好的调用方式，别的方式无法保证通过率）
 
 ```shell
 pip install -U pynocaptcha -i https://pypi.python.org/simple
 ```
 
 ```python
-from pynocaptcha import KasadaCtCracker, KasadaCdCracker
+# pip install --upgrade pynocaptcha
+from pynocaptcha import crack_kasada, KasadaCdCracker
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN, get_idea_proxy
 
+href = 'https://app.crowdgen.com/'
 
-cracker = KasadaCtCracker(
-    user_token="xxx",
-    href="https://xxxxxx/",
-    ips_url="https://mcprod.xxxxx/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/p.js",
-    submit=False,
-    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    proxy="user:pass@ip:port",
-    debug=True,
+session, kpsdk_res, extra = crack_kasada(
+    user_token=USER_TOKEN,
+    href='https://api.crowdgen.com/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp?x-kpsdk-v=j-1.1.0',
+    proxy=get_idea_proxy("hk"),
+    debug=True
 )
-ret = cracker.crack()
-print(ret)
 
+kpsdk_ct = kpsdk_res['x-kpsdk-ct']
+kpsdk_st = kpsdk_res['x-kpsdk-st']
+kpsdk_v = kpsdk_res['x-kpsdk-v']
 
-cracker = KasadaCdCracker(
-    user_token="xxx",
-    href="https://xxxxxx/",
-    st=1716775584627,
-    debug=True,
-)
-ret = cracker.crack()
-print(ret)
+kpsdk_cd = KasadaCdCracker(
+    show_ad=False,
+    internal_host=True,
+    user_token=USER_TOKEN,
+    href=href,
+    ct=kpsdk_ct,
+    st=kpsdk_st,
+    debug=True
+).crack()["x-kpsdk-cd"]
+
+headers = {
+    'accept': 'application/json, text/plain, */*',
+    'accept-language': session.client_hints['accept-language'],
+    'authorization': 'Bearer undefined',
+    'content-type': 'application/json',
+    'origin': 'https://app.crowdgen.com',
+    'priority': 'u=1, i',
+    'referer': 'https://app.crowdgen.com/',
+    'sec-ch-ua': session.client_hints['sec-ch-ua'],
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': session.client_hints['sec-ch-ua-platform'],
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': session.client_hints['user-agent'],
+    'x-kpsdk-cd': kpsdk_cd,
+    'x-kpsdk-ct': kpsdk_ct,
+    'x-kpsdk-v': kpsdk_v,
+}
+
+json_data = {
+    'email': 'rwegfv@gmail.com',
+    'password': 'klwubfrewfg2123',
+}
+
+response = session.post('https://api.crowdgen.com/api/v1/user/auth/login', headers=headers, json=json_data)
+print(response.status_code, response.text)
 ```

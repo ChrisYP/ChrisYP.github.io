@@ -5,6 +5,7 @@
 ## Shape
 
 ### 说明
+* 参数调用非常复杂，强烈建议直接使用 `pynocaptcha`，详情看下面 python 示例！！！
 * 当看到 `请求头` 或者 `post 表单/json` 中有 `x-xxxx-a` 或者 `xxxx-a`, 代表存在 `shape` 验证
 * 如何区分 `v1`/`v2`:
   * 打开 f12 输入 `window.__xr_bmobdb`, 看看是否会输出一个对象, 如果输出了就是 `v1`, 输出的是 `undefined` 就是 `v2`
@@ -139,23 +140,156 @@ pip install -U pynocaptcha -i https://pypi.python.org/simple
 ```
 
 ```python
-from pynocaptcha import ShapeV2Cracker
+# pip install --upgrade pynocaptcha
+from pynocaptcha import crack_shape_v1
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN
+
+import hashlib
 
 
-cracker = ShapeV2Cracker(
-    user_token="xxx",
-    href='https://www.starbucks.com/account/signin?ReturnUrl=%2F',
-    request={
-        "url": 'https://www.starbucks.com/bff/account/signin',
-    },
-    script_url=script_url,
-    script_content=script_content,
-    vmp_url=vmp_url,
-    vmp_content=vmp_content,
+def generate_id():
+    def e():
+        return hex(int(65536 * (1 + random.random())))[2:].zfill(4)
+    return e() + e() + "-" + e() + "-" + e() + "-" + e() + "-" + e() + e() + e()
+
+
+proxy = "127.0.0.1:7890"
+        
+session, shape_headers, extra = crack_shape_v1(
+    user_token=USER_TOKEN,
+    href='https://www.starbucks.com.cn/',
+    script_url='https://cards.starbucks.com.cn/prod/assets/js/esabxubs5hwen.js?async',
+    vmp_regexp=r'"(https:\/\/cards\.starbucks\.com\.cn\/prod\/assets\/js\/esabxubs5hwen.js\?seed=.*?&ixGa8B5N8x--z=q)"',
+    proxy=proxy,
+)
+
+session.cookies.update({
+    "sid": "xxx" # starbucks 账号 token
+})
+
+transaction_id = generate_id()
+
+headers = {
+    'Host': 'profile.starbucks.com.cn',
+    'Connection': 'keep-alive',
+    'content-length': '0',
+    'x-transaction-id': transaction_id,
+    'sec-ch-ua-platform': extra['sec-ch-ua-platform'],
+    'ixGa8B5N8x-z': shape_headers['ixGa8B5N8x-z'],
+    'sec-ch-ua': extra['sec-ch-ua'],
+    'X-API-Version': '2.0',
+    'sec-ch-ua-mobile': '?0',
+    'appKey': '8c2efe7006da1b98b5cf631e4791f2f5',
+    'ixGa8B5N8x-c': shape_headers['ixGa8B5N8x-c'],
+    'apikey': 'a120a1b39d554c9c89c7f58738b9fd96',
+    'ixGa8B5N8x-d': shape_headers['ixGa8B5N8x-d'],
+    'ixGa8B5N8x-b': shape_headers['ixGa8B5N8x-b'],
+    'x-source-code': 'WEB',
+    'sign': hashlib.sha256(("8c2efe7006da1b98b5cf631e4791f2f5" + transaction_id + "{}fc537c09ef4bddb298039ad83ec4dd6b").encode()).hexdigest(),
+    'x-msr-version': '2',
+    'ixGa8B5N8x-a': shape_headers['ixGa8B5N8x-a'],
+    'User-Agent': extra['user-agent'],
+    'ixGa8B5N8x-f': shape_headers['ixGa8B5N8x-f'],
+    'ixGa8B5N8x-a0': shape_headers.get("ixGa8B5N8x-a0"),
+    'Accept': '*/*',
+    'Sec-Fetch-Site': 'same-site',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Dest': 'empty',
+    'Referer': 'https://www.starbucks.com.cn/',
+    'Accept-Language': extra['accept-language'],
+    'Cookie': 'sid=' + sid,
+    'Content-Type': 'application/x-www-form-urlencoded',
+}
+if not shape_headers.get("ixGa8B5N8x-a0"):
+    del headers['ixGa8B5N8x-a0']
+
+for _ in range(2):
+    response = session.post(
+        'https://profile.starbucks.com.cn/api/v2/customers/detail', 
+        headers=headers,
+    )
+    print(response.status_code, response.text[:100])
+```
+
+```python
+# pip install --upgrade pynocaptcha
+from pynocaptcha import crack_shape_v1, crack_shape_v2
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN, get_idea_proxy
+
+
+proxy = "127.0.0.1:7890"
+
+href = 'https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels=420061149261290252835972884185%2C&tABt=false'
+
+user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'
+
+session, result, extra = crack_shape_v2(user_token=USER_TOKEN, href=href, user_agent=user_agent, proxy=proxy)
+
+if isinstance(result, magneto.Response):
+    response = result
+else:
+    headers = result
+    response = session.get(href, headers=headers)
+
+if response.status_code == 302:
+    print("失败", response.headers, response.text)
+
+if 'This service is currently unavailable' in response.text:
+    print('失败')
+else:
+    print('成功' if '420061149261290252835972884185' in response.text else '失败')
+```
+
+```python
+# pip install --upgrade pynocaptcha
+from pynocaptcha import crack_shape_v1, crack_shape_v2
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN, get_idea_proxy
+
+user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'
+
+session, shape_headers, extra = crack_shape_v2(
+    user_token=USER_TOKEN,
+    href='https://www.starbucks.com/gift', 
     pkey="dq7hy5l1",
     user_agent=user_agent,
-    debug=True,
+    request={
+        "url": 'https://www.starbucks.com/apiproxy/v1/gift/card/check-balance',
+    },
+    fast=random.random() > .7,
+    proxy=get_idea_proxy("hk"),
+    debug=True
 )
-ret = cracker.crack()
-print(ret)
+
+headers = {
+    'accept': 'application/json',
+    'accept-language': extra['accept-language'],
+    'content-type': 'application/json',
+    'origin': 'https://www.starbucks.com',
+    'priority': 'u=1, i',
+    'referer': 'https://www.starbucks.com/gift',
+    'sec-ch-ua': extra['sec-ch-ua'],
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': extra['sec-ch-ua-platform'],
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': extra["user-agent"],
+    **shape_headers,
+    'x-requested-with': 'XMLHttpRequest',
+}
+
+json_data = {
+    'cardNumber': '6312845416203301',
+    'pin': '13588441',
+    'market': 'US',
+}
+
+response = session.post('https://www.starbucks.com/apiproxy/v1/gift/card/check-balance', headers=headers, json=json_data)
+print(response.status_code, response.text)
 ```

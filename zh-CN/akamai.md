@@ -4,6 +4,7 @@
 ## Akamai
 
 ### 说明
+* akamai 还有其他很多因素影响，强烈建议直接使用 `pynocaptcha`，详情看下面 python 示例！！！
 * v2/v3 通用
 
 ### Request URL（POST）:
@@ -117,14 +118,21 @@ pip install -U pynocaptcha -i https://pypi.python.org/simple
 ```
 
 ```python
-from pynocaptcha import AkamaiV2Cracker
+
+# pip install --upgrade pynocaptcha
+from pynocaptcha import crack_akamai_v3
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN, get_idea_proxy
 
 
-cracker = AkamaiV2Cracker(
-    user_token="xxx",
-    href="https://www.jetstar.com/",
-    debug=True,
-)
-ret = cracker.crack()
-print(ret)
+_, response, _ = crack_akamai_v3(USER_TOKEN, {
+    'referer': 'https://www.dickssportinggoods.com/s/gift-cards',
+    "url": 'https://payments.dickssportinggoods.com/prod/api/paygate/v2/giftcard/balance',
+    "json": {
+        'cardNumber': '6186553725049271',
+        'pin': '22872681',
+    },
+}, proxy=get_idea_proxy("hk"), debug=True)
+print(response['status'], response["body"][:100])
 ```

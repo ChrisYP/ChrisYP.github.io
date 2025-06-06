@@ -5,6 +5,8 @@
 ## Datadome
 
 ### 说明
+* 参数调用非常复杂，强烈建议直接使用 `pynocaptcha`，详情看下面 python 示例！！！
+
 * 当看到 `cookies` 中有 `datadome`, 代表存在 `datadome` 验证, 有以下三种情况, 举个例子:
   * 当你要访问 `https://www.vinted.com/`, 挂代理请求 `https://www.vinted.com/`:
     * 状态码不是 `403` (`无感模式`): 
@@ -123,16 +125,66 @@ pip install -U pynocaptcha -i https://pypi.python.org/simple
 ```
 
 ```python
-from pynocaptcha import DatadomeCracker
+
+import re
+from utils import USER_TOKEN, get_idea_proxy
+from pynocaptcha import magneto, crack_datadome
 
 
-cracker = DatadomeCracker(
-    user_token="xxx",
-    href="https://soundcloud.com/",
-    js_url='https://dwt.soundcloud.com/js/',
-    proxy="user:pass@ip:port",
-    debug=True,
+def checkbalance(session: magneto.Session, extra):
+    """
+    后续需要进行的目标接口请求
+    """
+    data = {
+        'language': 'en-ca',
+        'csrfmiddlewaretoken': extra['csrfmiddlewaretoken'],
+        'card_number': '98082560015032626594919',
+        'pin': '4632',
+        'g-recaptcha-response': 'true',
+    }
+    
+    headers = {
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'accept-language': extra['accept-language'],
+        'content-type': 'application/x-www-form-urlencoded',
+        'origin': 'https://homedepot-ca.cashstar.com',
+        'priority': 'u=0, i',
+        'referer': 'https://homedepot-ca.cashstar.com/reload/',
+        'sec-ch-ua': extra['sec-ch-ua'],
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': extra['sec-ch-ua-platform'],
+        'sec-fetch-dest': 'document',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-user': '?1',
+        'upgrade-insecure-requests': '1',
+        'user-agent': extra['user-agent']
+    }
+    return session.post(
+        'https://homedepot-ca.cashstar.com/reload/',
+        headers=headers,
+        data=data, 
+    )
+
+
+def parse_index(resp, extra):
+    """
+    需要解析 href 首页响应源码中获取的数据
+    """
+    token = re.search(r'name="csrfmiddlewaretoken" value="(.*?)"', resp.text)[1]
+    extra['csrfmiddlewaretoken'] = token
+
+
+session, resp, extra = crack_datadome(
+    user_token=USER_TOKEN,
+    href='https://homedepot-ca.cashstar.com/reload/',
+    verifiers=[
+        checkbalance
+    ],
+    parse_index=parse_index,
+    proxy=get_idea_proxy("hk"),
+    debug=True
 )
-ret = cracker.crack()
-print(ret)
+
+print(resp.text)
 ```

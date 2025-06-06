@@ -8,6 +8,9 @@
 * 按压模式消耗 `1000` 点, 需要传入 `app_id`、`href`、`captcha`
 
 ### 说明
+
+* 参数调用非常复杂，强烈建议直接使用 `pynocaptcha`，详情看下面 python 示例！！！
+
 * 当看到 `cookies` 中有 `_px2`、`_px3` 时, 代表存在 `perimeterx` 验证, 有以下三种情况
     * `仅无感模式（*/api/v2/colletor）`: 打开目标页面, 没有出现任何验证, f12 中不停发送 `*/api/v2/colletor` 接口, 该模式必须传 `app_id`、`href`、`proxy`
     ![验证接口](/images/perimeterx/1.png)
@@ -141,26 +144,62 @@ pip install -U pynocaptcha -i https://pypi.python.org/simple
 ```
 
 ```python
-from pynocaptcha import PerimeterxUniversalCracker
+
+import re
+
+# 访问 www.nocaptcha.io 官网获取 User-Token
+# get the User-Token from www.nocaptcha.io
+from utils import USER_TOKEN, get_idea_proxy
+from pynocaptcha import magneto, crack_perimeterx
 
 
-cracker = PerimeterxUniversalCracker(
-    user_token="xxx",
-    app_id="PXu6b0qd2S",
-    href="https://www.walmart.com/",
-    captcha={
-        "redirectUrl": "/blocked?url=Lw==&uuid=40f6c510-eb71-11ee-9952-619a9b96c881&vid=418e19e7-eb71-11ee-8541-88227401c984&g=b",
-        "appId": "PXu6b0qd2S",
-        "jsClientSrc": "/px/PXu6b0qd2S/init.js",
-        "firstPartyEnabled": True,
-        "vid": "418e19e7-eb71-11ee-8541-88227401c984",
-        "uuid": "40f6c510-eb71-11ee-9952-619a9b96c881",
-        "hostUrl": "/px/PXu6b0qd2S/xhr",
-        "blockScript": "/px/PXu6b0qd2S/captcha/captcha.js?a=c&m=0&u=40f6c510-eb71-11ee-9952-619a9b96c881&v=418e19e7-eb71-11ee-8541-88227401c984&g=b",
-    },
-    proxy="user:pass@ip:port",
-    debug=True,
+def parse_index(resp, extra):
+    extra["csrf_token"] = re.search(
+        r'name="csrf_token" value="(.*?)"', resp.text
+    )[1]
+
+
+def checkbalance(session: magneto.Session, extra):
+    headers = {
+        'sec-ch-ua-platform': extra['sec-ch-ua-platform'], 
+        'x-requested-with': 'XMLHttpRequest',
+        'user-agent': extra['user-agent'],
+        'accept': 'application/json, text/javascript, */*; q=0.01',
+        'sec-ch-ua': extra['sec-ch-ua'],
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'sec-ch-ua-mobile': '?0',
+        'Origin': 'https://www.columbia.com', 
+        'Sec-Fetch-Site': 'same-origin', 
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Dest': 'empty', 
+        'Referer': 'https://www.columbia.com/giftcards/', 
+        'Accept-Encoding': 'gzip, deflate, br, zstd',
+        'Accept-Language': extra['accept-language'], 
+        'priority': 'u=1, i'
+    }
+
+    data = {
+        'giftCertID': '8554515151515155454',
+        'giftCertPin': '1541',
+        'csrf_token': extra["csrf_token"]
+    }
+
+    return session.post(
+        'https://www.columbia.com/on/demandware.store/Sites-Columbia_US-Site/en_US/GiftCard-CheckBalance',
+        headers=headers,
+        data=data,
+    )
+
+
+session, resp, extra = crack_perimeterx(
+    USER_TOKEN,
+    href='https://www.columbia.com/giftcards/',
+    app_id='PXLkXIE7Oj',
+    proxy=get_idea_proxy("hk"),
+    parse_index=parse_index,
+    verifiers=[
+        checkbalance
+    ]
 )
-ret = cracker.crack()
-print(ret)
+print(resp.status_code, resp.text)
 ```
