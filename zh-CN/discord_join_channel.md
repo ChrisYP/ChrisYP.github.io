@@ -1,6 +1,6 @@
 ------
 
-[`返回主页`](en.md)    [`中文文档`](../zh-CN/hcaptcha.md)
+[`返回首页`](../README.md)    [`English Version`](../en-US/discord_join_channel.md)
 
 ## Discord 加入频道 (测试版)
 
