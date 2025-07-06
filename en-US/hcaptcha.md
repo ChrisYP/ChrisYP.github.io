@@ -41,7 +41,7 @@ Alternatively, find the package as shown below, take the value of host parameter
 | `region`         | `String`  | `When using proxy, pass proxy region e.g. hk, sg`                                                                        | `No`     |
 | `invisible`      | `Boolean` | `Whether verification is invisible (default false)`                                                                      | `No`     |
 | `need_ekey`      | `Boolean` | `Whether to return E0_ey... (default false)`                                                                             | `No`     |
-| `preflight_uuid` | `String`  | (_Enterprise_) `Preflight ID for maintaining context (proxy region, UA, etc.) [#Preflight API](./hcaptcha_preflight.md)` | `No`     |
+| `preflight_uuid` | `String`  | (_Enterprise_) `Preflight ID for maintaining context (proxy region, UA, etc.) `[#Preflight API](./hcaptcha_preflight.md) | `No`     |
 
 ### Response Data (JSON):
 
