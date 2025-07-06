@@ -19,7 +19,7 @@ After obtaining the `region` (e.g., `hk`, `gb`, `us`), proxies used must corresp
 
 | API Endpoint                                                |
 | ----------------------------------------------------------- |
-| `http://api.nocaptcha.io/api/wanda/hcaptcha/preflight_uuid` |
+| `http://api.nocaptcha.io/api/wanda/hcaptcha/preflight` |
 
 ### Request Headers:
 

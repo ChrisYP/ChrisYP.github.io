@@ -20,7 +20,7 @@
 
 | API 端点                                                    |
 | ----------------------------------------------------------- |
-| `http://api.nocaptcha.io/api/wanda/hcaptcha/preflight_uuid` |
+| `http://api.nocaptcha.io/api/wanda/hcaptcha/preflight` |
 
 ### 请求头 (Request Headers):
 
