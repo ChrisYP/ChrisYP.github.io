@@ -1,7 +1,7 @@
 ------
 [`返回首页`](../README.md)    [`上一页`](recaptcha.md)      [`下一页`](incapsula.md)  [`English Version`](../en-US/hcaptcha.md)
 
-## Hcaptcha
+## hCaptcha
 
 ### 分数说明
   🚨🚨🚨如果你获取到值 但网站校验不通过 请联系管理员
@@ -31,54 +31,14 @@
 |--------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
 | `sitekey`    | `String`  | `hcaptcha 对接 key`                                                                                                                          | `是` |
 | `referer`    | `String`  | `见上文参数说明`                                                                                         | `是` |
-| `rqdata`     | `String`  | `验证码配置接口有返回 captcha_rqdata、captcha_rqtoken 的请携带该值(如 discord 加频道)`                                                                                         | `否` |
-| `domain`     | `String`  | `hcaptcha 的验证接口域名（即 getcaptcha/checkcaptcha 等接口的域名）, 某些网站验证域名不一致, 默认 hcaptcha.com`                | `否` |
+| `rqdata`     | `String`  | (*Enterprise*) `验证码配置接口有返回 captcha_rqdata、captcha_rqtoken 的请携带该值(如 discord 加频道)`                                                                                         | `否` |
 | `proxy`      | `String`  | `如需要请传 ip:port 或 usr:pwd@ip:port 或 socks5://ip:port (如果有问题联系管理员)` | `否` |
 | `region`      | `String`  | `当传入 proxy 参数时, 请传入代理的地区, 如: hk, sg` | `否` |
 | `invisible`   | `Boolean` | `触发验证码时是否能看见点击框（或 是否无感验证码）, 默认 false`                                                                                                                                        | `否` |
 | `need_ekey`   | `Boolean` | `是否需要返回 `E0_ey...`, 默认 false`                                                                                                                                        | `否` |
-
-#### json 示例
-
-```
-{
-  "sitekey": "a9b5fb07-92ff-493f-86fe-352a2803b3df",
-  "referer": "https://discord.com/channels/253581140072464384/357581480110850049",
-  "rqdata": "RRZ5RNoOL4uNPvEp0yB+bMPkBe2lUiM7p4u5lMAVUC9UBmzxJqdDDpGMrcDNApg/DDAQNIIlwEn2dLr7dZMg32I2bi523ZRfkAKpKxxg1sqnVW0xR9Y9ZCcwv54EiHeEqQ+iipixAVozAb6LjtwzNm2H9L15iSN8QfVrcp0Z",
-}
-```
-
-```
-{
-  "sitekey": "c7faac4c-1cd7-4b1b-b2d4-42ba98d09c7a",
-  "referer": "https://b.stripecdn.com/stripethirdparty-srv/assets/v13.1/HCaptcha.html?id=ab2764cd-d392-4fd0-81b4-9de6c4144c31&origin=https%3A%2F%2Fjs.stripe.com",
-  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-  "proxy": "ip:port 或 usr:pwd@ip:port 或 socks5://ip:port"
-}
-```
-
-```
-{
-  "sitekey": "c7faac4c-1cd7-4b1b-b2d4-42ba98d09c7a",
-  "referer": "https://b.stripecdn.com/stripethirdparty-srv/assets/v13.1/HCaptcha.html?id=ab2764cd-d392-4fd0-81b4-9de6c4144c31&origin=https%3A%2F%2Fjs.stripe.com",
-  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-  "proxy": "ip:port 或 usr:pwd@ip:port 或 socks5://ip:port"
-}
-```
-
-```
-{
-  "sitekey": "c7faac4c-1cd7-4b1b-b2d4-42ba98d09c7a",
-  "referer": "https://b.stripecdn.com/stripethirdparty-srv/assets/v13.1/HCaptcha.html?id=ab2764cd-d392-4fd0-81b4-9de6c4144c31&origin=https%3A%2F%2Fjs.stripe.com",
-  "domain": "hcaptcha-endpoint.ecosec.on.epicgames.com",
-  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-  "rqdata": "RRZ5RNoOL4uNPvEp0yB+bMPkBe2lUiM7p4u5lMAVUC9UBmzxJqdDDpGMrcDNApg/DDAQNIIlwEn2dLr7dZMg32I2bi523ZRfkAKpKxxg1sqnVW0xR9Y9ZCcwv54EiHeEqQ+iipixAVozAb6LjtwzNm2H9L15iSN8QfVrcp0Z",
-}
-```
-
+| `preflight_uuid`   | `String` | (*Enterprise*) `预请求ID, 用于保持与业务的上下文代理地区, UserAgent等数据相同` [#预请求接口](./hcaptcha_preflight.md)                                                                                                                                         | `否` |
 ### Response Data（JSON）:
 
-#### 提交验证（submit=true）
 
 | 参数名            | 类型        | 说明                            |
 |----------------|-----------|-------------------------------|
@@ -100,19 +60,6 @@
   "msg": "验证成功",
   "status": 1
 }
-```
-
-### CURL command:
-
-```
-curl \
- -H "Host: api.nocaptcha.io" \
- -H "User-Agent: python-requests/2.28.2" \
- -H "Accept: */*" \
- -H "User-Token: xxx" \
- -H "Content-Type: application/json" \
- --data-binary "{\"sitekey\": \"f5561ba9-8f1e-40ca-9b5b-a0b3f719ef34\", \"referer\": \"https://discord.com/login\"}" \
- --compressed "http://api.nocaptcha.io/api/wanda/hcaptcha/universal"
 ```
 
 ### 调用示例
