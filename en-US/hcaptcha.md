@@ -4,10 +4,9 @@
 
 ## Hcaptcha
 
-### Score Explanation
+### How to Determine If It's the Enterprise Edition  
 
-🚨🚨🚨
-If you get a value but website validation fails, contact admin
+🚨🚨🚨 If you obtain the value but the website validation fails, this indicates that the website is using the **Enterprise** plan. You can first try using the fields marked as **_Enterprise_** in the documentation. If that doesn’t work, you may also contact the administrator.  
 
 ### referer Parameter Explanation
 
