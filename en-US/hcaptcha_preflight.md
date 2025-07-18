@@ -5,7 +5,7 @@
 
 ### When to Use
 
-Use when a website has noticeable score detection to improve verification pass rates.
+Use when a website has noticeable score detection to improve verification pass rates. **Please note that the `region` obtained through this interface must be passed into your proxy; otherwise, it will be meaningless** (e.g., user-**[dynamic_region]**:pwd@ip:port).
 
 ### Description
 
@@ -13,7 +13,7 @@ Used to maintain consistent contextual proxy region, UserAgent, and other data w
 
 ### 🚨🚨🚨
 
-After obtaining the `region` (e.g., `hk`, `gb`, `us`), proxies used must correspond to that region.
+After obtaining the `region` (e.g., `hk`, `gb`, `us`), **the proxy used must correspond to that region**. **The region obtained through this interface MUST be applied to your proxy; otherwise, this process becomes meaningless** (e.g. region=gb, user-**gb**:pwd@ip:port).
 
 ### Request URL (POST):
 
