@@ -5,7 +5,7 @@
 
 ### When to Use
 
-Use when a website has noticeable score detection to improve verification pass rates. **Please note that the `region` obtained through this interface must be passed into your proxy; otherwise, it will be meaningless** (e.g., user-**[dynamic_region]**:pwd@ip:port).
+Use when a website has noticeable score detection to improve verification pass rates.
 
 ### Description
 
