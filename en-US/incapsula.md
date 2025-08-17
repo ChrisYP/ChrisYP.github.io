@@ -1,5 +1,5 @@
 ------
-[`Back to homepage`](/en-US/en.md)   [`中文文档`](../zh-CN/incapsula.md)
+[`Back to Home`](en.md)    [`Previous`](hcaptcha.md)    [`Next`](incapsula_utmvc.md)    [`中文文档`](../zh-CN/incapsula.md)
 
 ## Incapsula ( reese84 )
 

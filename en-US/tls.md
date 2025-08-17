@@ -1,4 +1,4 @@
-[`Back to homepage`](en.md)  [`中文文档`](../zh-CN/tls.md)
+[`Back to Home`](en.md)    [`Previous`](akamai.md)    [`Next`](cloudflare.md)    [`中文文档`](../zh-CN/tls.md)
 
 ## Tls Client
 

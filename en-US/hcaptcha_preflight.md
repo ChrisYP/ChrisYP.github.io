@@ -1,5 +1,5 @@
 ---
-[`Back to Home`](../README.md)  [`中文文档`](../zh-CN/hcaptcha_preflight.md)
+[`Back to Home`](en.md)    [`中文文档`](../zh-CN/hcaptcha_preflight.md)
 
 ## hCaptcha Preflight API (Enterprise)
 
@@ -59,4 +59,3 @@ After obtaining the `region` (e.g., `hk`, `gb`, `us`), **the proxy used must cor
     }
 }
 ```
-

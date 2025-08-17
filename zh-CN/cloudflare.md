@@ -1,6 +1,6 @@
 ------
 
-[`返回首页`](../README.md)    [`上一页`](discord.md)      [`下一页`](aws.md)
+[`返回首页`](../README.md)    [`上一页`](tls.md)      [`下一页`](aws.md)    [`English Version`](../en-US/cloudflare.md)
 
 ## CloudFlare
 
@@ -77,7 +77,6 @@
 {
     "href": "https://nowsecure.nl/",
     "proxy": "usr:pwd@ip:port",
-    "alpha": true, // 是否为无感 cookies
 }
 
 ```

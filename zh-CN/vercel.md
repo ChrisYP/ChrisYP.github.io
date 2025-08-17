@@ -1,11 +1,11 @@
 ------
 
-[`返回首页`](../README.md)    [`上一页`](shape.md)
+[`返回首页`](../README.md)    [`上一页`](shape.md)    [`下一页`](discord_join_channel.md)    [`English Version`](../en-US/vercel.md)
 
 ## Vercel
 
 ### 价格说明
-* 消耗 `1000` 点, 需要传入 `proxy`
+* 消耗 `150` 点, 需要传入 `proxy`
 
 ### 说明
 * 当打开目标页面，出现以下提示，抓包有发送 `/.well-known/vercel/security/request-challenge` 接口，且 `cookies` 中有 `_vcrcs` 代表存在 `vercel` 验证
@@ -52,7 +52,7 @@
 | `status`       | `Integer` | `调用是否成功, 1 成功, 0 失败, 请使用该值判断` |
 | `msg`          | `String`  | `调用结果中文说明`                    |
 | `id`           | `String`  | `该次请求 id（唯一, 可用作后续记录查询）`      |
-| `data._vcrcs`   | `String`  | `验证通过返回的可用的 _vcrcs cookie, 可用于后续验证接口`    |
+| `data._vcrcs`   | `String`  | `验证通过返回的可用的 _vcrcs cookie, 可用���后续验证接口`    |
 | `cost`         | `String`  | `验证耗时（毫秒）`                    |
 
 ```

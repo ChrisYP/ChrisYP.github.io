@@ -1,4 +1,4 @@
-[`Back to homepage`](en.md) [`中文文档`](../zh-CN/recaptcha.md)
+[`Back to Home`](en.md)    [`Next`](recaptcha_app.md)    [`中文文档`](../zh-CN/recaptcha.md)
 
 ## ReCaptcha
 

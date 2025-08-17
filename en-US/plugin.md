@@ -1,4 +1,4 @@
-[`Return to Home`](en.md)  [`中文文档`](../zh-CN/plugin.md)
+[`Back to Home`](en.md)    [`中文文档`](../zh-CN/plugin.md)
 
 ## ReCaptcha & hCaptcha
 
@@ -50,4 +50,3 @@
 ```
 
 With this, all the parameters needed for cracking are obtained at once. The operation of hCaptcha is exactly the same as reCaptcha, so it is not repeated here.
-

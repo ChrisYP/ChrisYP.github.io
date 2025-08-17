@@ -1,6 +1,6 @@
 ------
 
-[`返回首页`](../README.md)    [`上一页`](aws.md)   [`下一页`](kasada.md)
+[`返回首页`](../README.md)    [`上一页`](aws.md)   [`下一页`](kasada.md)    [`English Version`](../en-US/perimeterx.md)
 
 ## PerimeterX
 

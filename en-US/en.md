@@ -1,6 +1,6 @@
 ## Overview
 
-**👉[中文文档](/)👈**
+**👉[中文文档](../README.md)👈**
 
 ### Currently Supported APIs
 
@@ -9,13 +9,31 @@
 |  [recaptcha:universal](recaptcha.md)  |                                          `ReCaptcha (v2/v3 Universal), Direct token return`                                          |              ✅               |      `300`       |          `150`           |       ✅        |                  ❌                  |
 | [recaptcha:enterprise](recaptcha.md)  |                                         `ReCaptcha (v2/v3 Enterprise), Direct token return`                                          |              ✅               |      `500`       |          `250`           |       ✅        |                  ❌                  |
 |    [recaptcha:steam](recaptcha.md)    |                                               `ReCaptcha (Steam), Direct token return`                                               |              ✅               |      `600`       |          `300`           |       ✅        |                  ❌                  |
-|   [recaptcha:app](recaptcha_app.md)   |                                            `ReCaptcha (App Version), Direct token return`                                            |              ✅               |      `500`       |          `250`           |       ❌        |                  ❌                  |
+|   [recaptcha:app](recaptcha_app.md)   |                                            `ReCaptcha (App Version), Direct token return`                                            |              ✅               | `❌Discontinued❌` |          `250`           |       ❌        |                  ❌                  |
 |   [hcaptcha:universal](hcaptcha.md)   |                                      `Hcaptcha Universal, Direct return of generated_pass_UUID`                                      |              ✅               |      `300`       |          `150`           |       ✅        |                  ❌                  |
-|   [incapsula:reese84](incapsula.md)   |                                   `Incapsula Shield reese84 Universal, Returns solution parameter`                                   |              ✅               |      `210`       |            ❌             |       ❌        |                  ❌                  |
+|   [incapsula:reese84](incapsula.md)   |                                   `Incapsula Shield reese84 Universal, Returns solution parameter`                                   |              ✅               |      `210`       |            ❌             |       ✅        |                  ❌                  |
 | [incapsula:utmvc](incapsula_utmvc.md) |                     `Incapsula Shield __utmvc Universal, Direct server seamless verification or __utmvc cookie`                      |              ✅               |      `150`       |            ❌             |       ✅        |                  ❌                  |
-|        [akamai:v2](akamai.md)         |                                                 `Akamai v2, Direct return of _abck`                                                  |              ✅               |      `1000`      |            ❌             |       ✅        |                  ❌                  |
-|           [tls:v1](tls.md)            |           `tls forwarding interface, targeting ja3, http2 fingerprint verification interfaces (such as akamai/cloudflare)`           |              ✅               |      `100`       |            ❌             |       ✅        |                  ✅                  |
+| [incapsula:rbzid](incapsula_rbzid.md) |             `Incapsula Shield rbzid Universal, Returns verification parameter`             |              ✅               |      `100`       |            ❌             |       ✅        |                  ❌                  |
+|        [akamai:v2](akamai.md)         |                                                 `Akamai v2/v3, Direct return of _abck`                                                 |              ✅               |      `1000`      |            ❌             |       ✅        |                  ✅                  |
+|           [tls:v1](tls.md)            |           `tls forwarding interface, targeting ja3, http2 fingerprint verification interfaces (such as akamai/cloudflare)`           |              ✅               |      `100`       |            ❌             |       ✅        |                  ❌                  |
+| [cloudflare:universal](cloudflare.md) | `CloudFlare Shield Universal, Returns cookies or captcha submission parameters (turnstile 300 points)` |              ✅              | `1000/300` | `1000/150` |       ✅        |                  ✅                  |
+| [aws:universal](aws.md) | `Aws Waf Shield, Returns aws-waf-token (only seamless 150 points)` |              ✅              | `500/150`  | `250/150`  |       ✅        |                  ❌                  |
+| [perimeterx:universal](perimeterx.md) | `Perimeterx Shield Universal, Returns _px2, _px3` |              ✅              |   `1000`   |     ❌      |       ✅        |                  ✅                  |
+| [kasada:ct](kasada.md) | `Kasada Shield, Returns x-kpsdk-ct` |              ✅              |   `1000`   |     ❌      |       ✅        |                  ✅                  |
+| [kasada:cd](kasada.md) | `Kasada Shield, Returns x-kpsdk-cd` |              ✅              |    `50`    |     ❌      |       ✅        |                  ❌                  |
+| [datadome:universal](datadome.md) | `Datadome Shield, Returns datadome cookie` |              ✅              |   `1000`   |     ❌      |       ✅        |                  ✅                  |
+| [shape:v1](shape.md) | `Shape Shield v1, Returns request header or form encryption parameters` |              ✅              |   `1000`   |     ❌      |       ✅        |                  ✅                  |
+| [shape:v2](shape.md) | `Shape Shield v2, Returns request header or form encryption parameters` |              ✅              |   `1000`   |     ❌      |       ✅        |                  ✅                  |
+| [vercel:universal](vercel.md) | `Vercel Shield Universal, Returns _vcrcs cookie` |              ✅              |   `150`    |     ❌      |       ✅        |                  ❌                  |
+| [discord:join_channel](discord_join_channel.md) | `Discord Join Channel` |              ✅              |   `500`    |     ❌      |       ✅        |                  ❌                  |
 
+### Proxy Usage Instructions
+
+* Use proxies with account/password authentication or those that do not require whitelist authentication. Format: ip:port or usr:pwd@ip:port
+* Use sticky/session proxies (i.e., IP remains unchanged for n minutes)
+* Pay attention to proxy usage frequency, do not use a fixed proxy repeatedly
+
+![proxy](/images/proxy.png)
 
 ### Definitions
 
@@ -78,4 +96,3 @@ http://api.nocaptcha.io/api/get_user_balance?user_token={User-Token}&nickname={n
     }
 }
 ```
-

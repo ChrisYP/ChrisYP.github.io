@@ -1,6 +1,6 @@
 ---
 
-[`Back to Home`](../README.md) [`Previous`](recaptcha.md) [`Next`](incapsula.md) [`中文文档`](../zh-CN/hcaptcha.md)
+[`Back to Home`](en.md)    [`Previous`](recaptcha_app.md)    [`Next`](incapsula.md)    [`中文文档`](../zh-CN/hcaptcha.md)
 
 ## Hcaptcha
 

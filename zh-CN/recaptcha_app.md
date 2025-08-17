@@ -1,5 +1,5 @@
 ------
-[`返回首页`](../README.md)    [`下一页`](cloudflare.md)    [`English Version`](../en-US/recaptcha_app.md)
+[`返回首页`](../README.md)    [`上一页`](recaptcha.md)      [`下一页`](hcaptcha.md)    [`English Version`](../en-US/recaptcha_app.md)
 
 ## ReCaptcha
 

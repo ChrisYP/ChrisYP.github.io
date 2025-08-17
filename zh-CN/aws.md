@@ -1,6 +1,6 @@
 ------
 
-[`返回首页`](../README.md)    [`上一页`](cloudflare.md)   [`下一页`](perimeterx.md)
+[`返回首页`](../README.md)    [`上一页`](cloudflare.md)   [`下一页`](perimeterx.md)    [`English Version`](../en-US/aws.md)
 
 ## Aws Waf
 

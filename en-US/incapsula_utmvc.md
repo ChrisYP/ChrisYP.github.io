@@ -1,6 +1,6 @@
 Here's the translation:
 
-[`Back to homepage`](en.md)   [`中文文档`](../zh-CN/incapsula_utmvc.md)
+[`Back to Home`](en.md)    [`Previous`](incapsula.md)    [`Next`](incapsula_rbzid.md)    [`中文文档`](../zh-CN/incapsula_utmvc.md)
 
 ## Incapsula ( __utmvc )
 

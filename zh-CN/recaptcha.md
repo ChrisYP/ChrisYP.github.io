@@ -1,4 +1,4 @@
-[`返回首页`](../README.md)    [`下一页`](hcaptcha.md)   [`English Version`](../en-US/recaptcha.md)
+[`返回首页`](../README.md)    [`下一页`](recaptcha_app.md)   [`English Version`](../en-US/recaptcha.md)
 
 ## ReCaptcha
 
