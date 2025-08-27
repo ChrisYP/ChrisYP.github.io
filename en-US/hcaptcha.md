@@ -10,6 +10,8 @@
 
 ### referer Parameter Explanation
 
+[`【🔥Highly Recommended🔥】 Get All Parameters Using the Plugin`](plugin.md)
+
 🚨🚨🚨
 Trigger page URL, ✅Copy the complete address displayed in browser✅, do not modify it, and especially do not use developer tools❌ to find it.
 Alternatively, find the package as shown below, take the value of host parameter, set referer as http://{host} as shown in image. Example: http://democaptcha.com

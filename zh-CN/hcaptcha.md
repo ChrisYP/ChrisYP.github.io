@@ -10,6 +10,8 @@
 
 ### referer 参数说明
 
+[`【🔥强烈推荐🔥】使用插件获取全部参数`](plugin.md)
+
 🚨🚨🚨 触发页面地址，✅ 请复制浏览器上显示的完整地址 ✅，不要改动，更不要去开发者工具 ❌ 里去找。
 或者找到下图的包, host 参数的值, referer 填写为 http://{host} 如下图所示, 例如: http://democaptcha.com
 ![hcaptcha](/images/hcaptcha/img.png)
