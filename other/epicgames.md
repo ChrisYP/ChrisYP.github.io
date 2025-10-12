@@ -56,4 +56,4 @@ open your eyes please 👀
 give up coding bro.
 
 # issue 3. I can pay you, can you help me write the code?
-NO. 
+NO.
