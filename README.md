@@ -7,7 +7,7 @@
 |                      类型                      |                           说明                            | 支持同步获取结果 |    消耗点数    |  传入代理IP优惠  | 运行状态 | 独享/包月（请联系客服） |
 |:--------------------------------------------:|:-------------------------------------------------------:|:--------:|:----------:|:----------:|:----:|:------------:|
 |  [recaptcha:universal](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 通用版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
-| [recaptcha:enterprise](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `500`    |   `250`    |  ✅   |      ❌       |
+| [recaptcha:enterprise](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
 |    [recaptcha:steam](/zh-CN/recaptcha.md)    |             `ReCaptcha（steam）, 直接返回 token`              |    ✅     |   `600`    |   `300`    |  ✅   |      ❌       |
 |   [recaptcha:app](/zh-CN/recaptcha_app.md)   |             `ReCaptcha（app 版本）, 直接返回 token`             |    ✅     |  `❌停止维护❌`  |   `250`    |  ❌   |      ❌       |
 |   [hcaptcha:universal](/zh-CN/hcaptcha.md)   |        `Hcaptcha 通用版, 直接返回 generated_pass_UUID`         |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
