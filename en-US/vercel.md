@@ -43,8 +43,6 @@
 
 ### Response Data (JSON):
 
-#### Submit verification (submit=true)
-
 | Parameter Name            | Type        | Description                            |
 |----------------|--------------------|------------------------------------|
 | `status`            | `String`   | `Submission status, success or fail`         |

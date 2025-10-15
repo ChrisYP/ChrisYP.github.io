@@ -74,8 +74,6 @@
 
 ### Response Data (JSON):
 
-#### Submit Verification (submit=true)
-
 | Parameter Name            | Type        | Description                            |
 |----------------|-----------|-------------------------------|
 | `status`       | `Integer` | `Whether the call was successful, 1 for success, 0 for failure. Use this value to judge` |

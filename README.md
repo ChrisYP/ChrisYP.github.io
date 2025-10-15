@@ -26,6 +26,7 @@
 |        [shape:v2](/zh-CN/shape.md)         |                `Shape 盾 v2 版本, 返回请求头或表单加密参数`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
 |        [vercel:universal](/zh-CN/vercel.md)         |                `Vercel 盾通用版本, 返回 _vcrcs cookie`                |    ✅     |   `150`    |     ❌     |  ✅   |      ❌       |
 |        [discord:join_channel](/zh-CN/discord_join_channel.md)         |                `discord 加频道`                |    ✅     |   `500`    |     ❌     |  ✅   |      ❌       |
+|        [site:unlocker](/zh-CN/unlocker.md)         |                `网站解锁器`                |    ✅     |   `1000`    |     ❌     |  ✅   |      ✅       |
 
 ### 传入代理说明
 * 使用账密认证或者无需白名单认证的代理, 格式请传 ip:port 或 usr:pwd@ip:port
