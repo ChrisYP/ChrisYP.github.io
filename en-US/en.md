@@ -50,7 +50,7 @@
 | `250,000,000` | `VIP 2` | `80%`    | Actual spend of `300` points is `240` points |
 | `600,000,000` | `VIP 3` | `70%`    | Actual spend of `300` points is `210` points |
 
-> !!! VIP discounts and proxy discounts cannot be enjoyed simultaneously.
+> !!! VIP discounts and proxy discounts can be enjoyed simultaneously.
 
 ### Rebate Description
 
