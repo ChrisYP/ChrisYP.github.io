@@ -7,8 +7,7 @@
 |                      类型                      |                           说明                            | 支持同步获取结果 |    消耗点数    |  传入代理IP优惠  | 运行状态 | 独享/包月（请联系客服） |
 |:--------------------------------------------:|:-------------------------------------------------------:|:--------:|:----------:|:----------:|:----:|:------------:|
 |  [recaptcha:universal](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 通用版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
-| [recaptcha:enterprise](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `500`    |   `250`    |  ✅   |      ❌       |
-|    [recaptcha:steam](/zh-CN/recaptcha.md)    |             `ReCaptcha（steam）, 直接返回 token`              |    ✅     |   `600`    |   `300`    |  ✅   |      ❌       |
+| [recaptcha:enterprise](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
 |   [recaptcha:app](/zh-CN/recaptcha_app.md)   |             `ReCaptcha（app 版本）, 直接返回 token`             |    ✅     |  `❌停止维护❌`  |   `250`    |  ❌   |      ❌       |
 |   [hcaptcha:universal](/zh-CN/hcaptcha.md)   |        `Hcaptcha 通用版, 直接返回 generated_pass_UUID`         |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
 |   [incapsula:reese84](/zh-CN/incapsula.md)   |        `Incapsula 盾 reese84 通用版, 返回 solution 参数`        |    ✅     |   `210`    |     ❌      |  ✅   |      ❌       |
@@ -26,6 +25,7 @@
 |        [shape:v2](/zh-CN/shape.md)         |                `Shape 盾 v2 版本, 返回请求头或表单加密参数`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
 |        [vercel:universal](/zh-CN/vercel.md)         |                `Vercel 盾通用版本, 返回 _vcrcs cookie`                |    ✅     |   `150`    |     ❌     |  ✅   |      ❌       |
 |        [discord:join_channel](/zh-CN/discord_join_channel.md)         |                `discord 加频道`                |    ✅     |   `500`    |     ❌     |  ✅   |      ❌       |
+|        [site:unlocker](/zh-CN/unlocker.md)         |                `网站解锁器`                |    ✅     |   `1000`    |     ❌     |  ✅   |      ✅       |
 
 ### 传入代理说明
 * 使用账密认证或者无需白名单认证的代理, 格式请传 ip:port 或 usr:pwd@ip:port
@@ -47,6 +47,8 @@
 | `100,000,000` 点 | `VIP 1` | `90%` | `300` 点服务实际消费 `270` 点 |
 | `250,000,000` 点 | `VIP 2` | `80%` | `300` 点服务实际消费 `240` 点 |
 | `600,000,000` 点 | `VIP 3` | `70%` | `300` 点服务实际消费 `210` 点 |
+
+> !!! vip 折扣和代理折扣不同时享有
 
 ### 返利说明
 

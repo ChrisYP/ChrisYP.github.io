@@ -7,8 +7,7 @@
 |                 Type                  |                                                             Description                                                              | Synchronous Result Retrieval | Points Deduction | Discount for Input Proxy | Running Status | Exclusive/Monthly (Contact Support) |
 |:-------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------:|:----------------:|:------------------------:|:--------------:|:-----------------------------------:|
 |  [recaptcha:universal](recaptcha.md)  |                                          `ReCaptcha (v2/v3 Universal), Direct token return`                                          |              ✅               |      `300`       |          `150`           |       ✅        |                  ❌                  |
-| [recaptcha:enterprise](recaptcha.md)  |                                         `ReCaptcha (v2/v3 Enterprise), Direct token return`                                          |              ✅               |      `500`       |          `250`           |       ✅        |                  ❌                  |
-|    [recaptcha:steam](recaptcha.md)    |                                               `ReCaptcha (Steam), Direct token return`                                               |              ✅               |      `600`       |          `300`           |       ✅        |                  ❌                  |
+| [recaptcha:enterprise](recaptcha.md)  |                                         `ReCaptcha (v2/v3 Enterprise), Direct token return`                                          |              ✅               |      `300`       |          `150`           |       ✅        |                  ❌                  |
 |   [recaptcha:app](recaptcha_app.md)   |                                            `ReCaptcha (App Version), Direct token return`                                            |              ✅               | `❌Discontinued❌` |          `250`           |       ❌        |                  ❌                  |
 |   [hcaptcha:universal](hcaptcha.md)   |                                      `Hcaptcha Universal, Direct return of generated_pass_UUID`                                      |              ✅               |      `300`       |          `150`           |       ✅        |                  ❌                  |
 |   [incapsula:reese84](incapsula.md)   |                                   `Incapsula Shield reese84 Universal, Returns solution parameter`                                   |              ✅               |      `210`       |            ❌             |       ✅        |                  ❌                  |
@@ -49,6 +48,8 @@
 | `100,000,000` | `VIP 1` | `90%`    | Actual spend of `300` points is `270` points |
 | `250,000,000` | `VIP 2` | `80%`    | Actual spend of `300` points is `240` points |
 | `600,000,000` | `VIP 3` | `70%`    | Actual spend of `300` points is `210` points |
+
+> !!! VIP discounts and proxy discounts cannot be enjoyed simultaneously.
 
 ### Rebate Description
 
