@@ -1,5 +1,9 @@
 # EpicGames
 
+## 2025-10-30 Update talon.js
+do u know?
+...
+
 ## 2025-10-12 Update preflight API
 ```
 
@@ -36,7 +40,7 @@ POST http://api.nocaptcha.io/api/wanda/hcaptcha/universal
 {
     "sitekey": "....",
     ...,
-    "confirm": "v1.0.0" # , don't close it
+    "confirm": "v1.0.1"
 }
 
 ```
@@ -46,7 +50,7 @@ pass right `confirm` param mean you know how to correct use new API
 
 ## python example code
 Please do not share this code. It is a secret between us.😅
-[Jump To Repo](https://www.nocaptcha.io/egs-clients-example_zip)
+[download (old)](https://www.nocaptcha.io/egs-clients-example_zip)
 
 
 # issue 1. Where can i find the `confirm` ?
