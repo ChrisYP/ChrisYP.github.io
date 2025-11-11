@@ -48,11 +48,6 @@ POST http://api.nocaptcha.io/api/wanda/hcaptcha/universal
 pass right `confirm` param mean you know how to correct use new API
 
 
-## python example code
-Please do not share this code. It is a secret between us.😅
-[download (old)](https://www.nocaptcha.io/egs-clients-example_zip)
-
-
 # issue 1. Where can i find the `confirm` ?
 open your eyes please 👀
 
