@@ -1,3 +1,4 @@
+## 🚫Attention!🚫 For the latest documents, please proceed to https://www.nocaptcha.io/user/documents
 ## Overview
 
 **👉[中文文档](../README.md)👈**
