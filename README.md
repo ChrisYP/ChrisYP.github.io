@@ -1,3 +1,5 @@
+## 🚫注意！🚫 最新文档请前往 https://www.nocaptcha.io/user/documents 查看
+
 ## Overview
 
 **👉[For English](/en-US/en.md)👈**
