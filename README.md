@@ -1,35 +1,36 @@
-## 🚫注意！🚫 最新文档请前往 https://www.nocaptcha.io/user/documents 查看
-
 ## Overview
 
 **👉[For English](/en-US/en.md)👈**
 
 ### 目前支持的接口
 
-|                      类型                      |                           说明                            | 支持同步获取结果 |    消耗点数    |  传入代理IP优惠  | 运行状态 | 独享/包月（请联系客服） |
-|:--------------------------------------------:|:-------------------------------------------------------:|:--------:|:----------:|:----------:|:----:|:------------:|
-|  [recaptcha:universal](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 通用版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
-| [recaptcha:enterprise](/zh-CN/recaptcha.md)  |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
-|   [recaptcha:app](/zh-CN/recaptcha_app.md)   |             `ReCaptcha（app 版本）, 直接返回 token`             |    ✅     |  `❌停止维护❌`  |   `250`    |  ❌   |      ❌       |
-|   [hcaptcha:universal](/zh-CN/hcaptcha.md)   |        `Hcaptcha 通用版, 直接返回 generated_pass_UUID`         |    ✅     |   `300`    |   `150`    |  ✅   |      ❌       |
-|   [incapsula:reese84](/zh-CN/incapsula.md)   |        `Incapsula 盾 reese84 通用版, 返回 solution 参数`        |    ✅     |   `210`    |     ❌      |  ✅   |      ❌       |
-| [incapsula:utmvc](/zh-CN/incapsula_utmvc.md) |  `Incapsula 盾 __utmvc 通用版, 服务器直接无感验证 或 __utmvc cookie`  |    ✅     |   `150`    |     ❌      |  ✅   |      ❌       |
-| [incapsula:rbzid](/zh-CN/incapsula_rbzid.md) |             `Incapsula 盾 rbzid 通用版, 返回验证参数`             |    ✅     |   `100`    |     ❌      |  ✅   |      ❌       |
-|        [akamai:v2](/zh-CN/akamai.md)         |                 `Akamai v2/v3, 直接返回 _abck`                 |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|           [tls:v1](/zh-CN/tls.md)            |  `tls 转发接口, 针对校验 ja3、http2 等指纹（akamai/cloudflare）的接口`   |    ✅     |   `100`    |     ❌      |  ✅   |      ❌       |
-| [cloudflare:universal](/zh-CN/cloudflare.md) | `CloudFlare 盾通用版, 返回 cookies 或验证码提交参数(turnstile 300 点)` |    ✅     | `1000/300` | `1000/150` |  ✅   |      ✅       |
-|        [aws:universal](/zh-CN/aws.md)        |        `Aws Waf 盾, 返回 aws-waf-token(仅无感 150 点)`         |    ✅     | `500/150`  | `250/150`  |  ✅   |      ❌       |
-| [perimeterx:universal](/zh-CN/perimeterx.md) |             `Perimeterx 盾通用版, 返回 _px2、_px3`             |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|        [kasada:ct](/zh-CN/kasada.md)         |                `Kasada 盾, 返回 x-kpsdk-ct`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|        [kasada:cd](/zh-CN/kasada.md)         |                `Kasada 盾, 返回 x-kpsdk-cd`                |    ✅     |    `50`    |     ❌      |  ✅   |       ❌       |
-|        [datadome:universal](/zh-CN/datadome.md)         |                `Datadome 盾, 返回 datadome cookie`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|        [shape:v1](/zh-CN/shape.md)         |                `Shape 盾 v1 版本, 返回请求头或表单加密参数`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|        [shape:v2](/zh-CN/shape.md)         |                `Shape 盾 v2 版本, 返回请求头或表单加密参数`                |    ✅     |   `1000`   |     ❌      |  ✅   |      ✅       |
-|        [vercel:universal](/zh-CN/vercel.md)         |                `Vercel 盾通用版本, 返回 _vcrcs cookie`                |    ✅     |   `150`    |     ❌     |  ✅   |      ❌       |
-|        [discord:join_channel](/zh-CN/discord_join_channel.md)         |                `discord 加频道`                |    ✅     |   `500`    |     ❌     |  ✅   |      ❌       |
-|        [site:unlocker](/zh-CN/unlocker.md)         |                `网站解锁器`                |    ✅     |   `1000`    |     ❌     |  ✅   |      ✅       |
+|                           类型                           |                           说明                            | 支持同步获取结果 |    消耗点数    | 传入代理IP优惠 | 运行状态 | 独享/包月（请联系客服） |
+|:------------------------------------------------------:|:-------------------------------------------------------:|:--------:|:----------:|:--------:|:----:|:------------:|
+|       [recaptcha:universal](/zh-CN/recaptcha.md)       |           `ReCaptcha（v2/v3 通用版）, 直接返回 token`            |    ✅     |   `300`    |    ✅     |  ✅   |      ❌       |
+|      [recaptcha:enterprise](/zh-CN/recaptcha.md)       |           `ReCaptcha（v2/v3 企业版）, 直接返回 token`            |    ✅     |   `300`    |    ✅     |  ✅   |      ❌       |
+|        [recaptcha:app](/zh-CN/recaptcha_app.md)        |             `ReCaptcha（app 版本）, 直接返回 token`             |    ✅     |  `❌停止维护❌`  |    ✅     |  ❌   |      ❌       |
+|        [hcaptcha:universal](/zh-CN/hcaptcha.md)        |        `Hcaptcha 通用版, 直接返回 generated_pass_UUID`         |    ✅     |   `300`    |    ✅     |  ✅   |      ❌       |
+|        [incapsula:reese84](/zh-CN/incapsula.md)        |        `Incapsula 盾 reese84 通用版, 返回 solution 参数`        |    ✅     |   `210`    |    ❌     |  ✅   |      ❌       |
+|      [incapsula:utmvc](/zh-CN/incapsula_utmvc.md)      |  `Incapsula 盾 __utmvc 通用版, 服务器直接无感验证 或 __utmvc cookie`  |    ✅     |   `150`    |    ❌     |  ✅   |      ❌       |
+|      [incapsula:rbzid](/zh-CN/incapsula_rbzid.md)      |             `Incapsula 盾 rbzid 通用版, 返回验证参数`             |    ✅     |   `100`    |    ❌     |  ✅   |      ❌       |
+|             [akamai:v2](/zh-CN/akamai.md)              |               `Akamai v2/v3, 直接返回 _abck`                |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|                [tls:v1](/zh-CN/tls.md)                 |  `tls 转发接口, 针对校验 ja3、http2 等指纹（akamai/cloudflare）的接口`   |    ✅     |   `100`    |    ❌     |  ✅   |      ❌       |
+|      [cloudflare:universal](/zh-CN/cloudflare.md)      | `CloudFlare 盾通用版, 返回 cookies 或验证码提交参数(turnstile 300 点)` |    ✅     | `1000/300` |    ✅     |  ✅   |      ✅       |
+|             [aws:universal](/zh-CN/aws.md)             |        `Aws Waf 盾, 返回 aws-waf-token(仅无感 150 点)`         |    ✅     | `300/150`  |    ✅     |  ✅   |      ❌       |
+|      [perimeterx:universal](/zh-CN/perimeterx.md)      |             `Perimeterx 盾通用版, 返回 _px2、_px3`             |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|             [kasada:ct](/zh-CN/kasada.md)              |                `Kasada 盾, 返回 x-kpsdk-ct`                |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|             [kasada:cd](/zh-CN/kasada.md)              |                `Kasada 盾, 返回 x-kpsdk-cd`                |    ✅     |    `50`    |    ❌     |  ✅   |      ❌       |
+|        [datadome:universal](/zh-CN/datadome.md)        |            `Datadome 盾, 返回 datadome cookie`             |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|              [shape:v1](/zh-CN/shape.md)               |              `Shape 盾 v1 版本, 返回请求头或表单加密参数`              |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|              [shape:v2](/zh-CN/shape.md)               |              `Shape 盾 v2 版本, 返回请求头或表单加密参数`              |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|          [vercel:universal](/zh-CN/vercel.md)          |            `Vercel 盾通用版本, 返回 _vcrcs cookie`             |    ✅     |   `150`    |    ❌     |  ✅   |      ❌       |
+| [discord:join_channel](/zh-CN/discord_join_channel.md) |                      `discord 加频道`                      |    ✅     |   `500`    |    ❌     |  ✅   |      ❌       |
+|          [site:unlocker](/zh-CN/unlocker.md)           |                         `网站解锁器`                         |    ✅     |   `1000`   |    ❌     |  ✅   |      ✅       |
+|        [funcaptcha:sense](/zh-CN/funcaptcha.md)         |                `Funcaptcha 无感`                |    ✅     |   `500`    |     ❌     |  ✅   |      ✅       |
+|        [castle:universal](/zh-CN/castle.md)         |                `Castle`                |    ✅     |   `500`    |     ❌     |  ✅   |      ✅       |
 
 ### 传入代理说明
+
 * 使用账密认证或者无需白名单认证的代理, 格式请传 ip:port 或 usr:pwd@ip:port
 * 使用粘性/会话代理(即 n 分钟内 ip 保持不变的类型)
 * 注意代理使用次数, 不要固定一个代理
@@ -42,15 +43,22 @@
 * `User-Token`: 用户令牌, 调用服务需要传入该参数, 在用户主页可以查看
 * `Developer-ID`: 开发者 ID, 开发者用户使用, 用户主页邀请链接的字符串(如 xxx/register?c=abcdef, 则 `abcdef` 为开发者 ID)
 
+### 传入代理折扣说明
+
+代理折扣每个服务为一个固定值（通常为服务价格的 `20%` 如 `1000点` 代理折扣 `200点` 实际消费为 `800点`）
+
 ### 等级说明
 
-| 消费点数            | 等级      | 折扣    | 说明                    |
-|-----------------|---------|-------|-----------------------|
-| `100,000,000` 点 | `VIP 1` | `90%` | `300` 点服务实际消费 `270` 点 |
-| `250,000,000` 点 | `VIP 2` | `80%` | `300` 点服务实际消费 `240` 点 |
-| `600,000,000` 点 | `VIP 3` | `70%` | `300` 点服务实际消费 `210` 点 |
-
-> !!! vip 折扣和代理折扣不同时享有
+|   等级    | 消费点数            |  消费($)   |   折扣   | 折扣示例(1000点实际消费) | 代理折扣示例(如支持)(1000点实际消费) |
+|:-------:|:----------------|:--------:|:------:|:---------------:|:----------------------:|
+| `VIP 0` | `0`             |   `0`    | `100%` |     `1000`      |         `800`          |
+| `VIP 1` | `99,000,000`    |  `1500`  | `90%`  |      `900`      |         `700`          |
+| `VIP 2` | `247,500,000`   |  `3750`  | `80%`  |      `800`      |         `600`          |
+| `VIP 3` | `594,000,000`   |  `9000`  | `70%`  |      `700`      |         `500`          |
+| `VIP 4` | `990,000,000`   | `15000`  | `60%`  |      `600`      |         `400`          |
+| `VIP 5` | `1,980,000,000` | `30000`  | `50%`  |      `500`      |         `300`          |
+| `VIP 6` | `3,300,000,000` | `50000`  | `40%`  |      `400`      |         `200`          |
+| `VIP 7` | `6,600,000,000` | `100000` | `30%`  |      `300`      |         `100`          |
 
 ### 返利说明
 
